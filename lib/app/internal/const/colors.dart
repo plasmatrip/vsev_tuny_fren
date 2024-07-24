@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+
+const dayBaseBase_01 = Color(0xFFFFFFFF);
+const dayBaseBase_02 = Color(0xFFF8FCFD);
+const dayBaseBase_03 = Color(0xFFE8E8EC);
+const dayBaseBase_05 = Color(0xFFACADB0);
+const dayBaseBase_06 = Color(0xFF8C8D95);
+const dayBasePrimary = Color(0xFFFAB9C8);
+const dayBaseSecondary_01 = Color(0xFFFFE0E7);
+const dayBaseSecondary_02 = Color(0xFFF86C8C);
+const dayBaseAccent_01 = Color(0xFF73E6A1);
+const dayBaseAccent_02 = Color(0xFFBEF6D5);
+const dayBaseAccentActive = Color(0xFF29CA69);
+const dayBaseClear_02 = Color(0xFF00000A);
+const dayBaseClearActive_01 = Color(0xFFCCCCCC);
+const dayBaseClearActive_02 = Color(0xFF00001F);
+const dayTextIconsText_01 = Color(0xFF202023);
+const dayTextIconsText_02 = Color(0xFF1E1E20);
+const dayTextIconsText_03 = Color(0xFF5F6365);
+const dayTextIconsText_04 = Color(0xFF96999A);
+const dayTextIconsText_05 = Color(0xFFB2B7B9);
+const dayTextIconsLink = Color(0xFF526ED3);
+const dayTextIconsNegative = Color(0xFFDD4C1E);
