@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:vsev_tuny_fren/app/internal/const/boxes.dart';
 import 'package:vsev_tuny_fren/app/models/client.dart';
 
-class EmployeeRepo with ChangeNotifier {
+class ClientRepo with ChangeNotifier {
   Box repo = Hive.box<Client>(Boxes.client);
 
   Client _client = Client.create();

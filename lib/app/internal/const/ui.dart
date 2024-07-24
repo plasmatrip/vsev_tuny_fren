@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 
 extension UI on BuildContext {
   TextStyle get s20w400 => TextStyle(fontSize: 20.h, fontFamily: 'Manrope', fontWeight: FontWeight.w400);
@@ -33,17 +34,12 @@ extension UI on BuildContext {
   //       height: 0,
   //     );
 
-  // ButtonStyle get extraBtn => FilledButton.styleFrom(
-  //       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-  //       backgroundColor: colors_2,
-  //       foregroundColor: colors_3,
-  //       disabledBackgroundColor: colors_5,
-  //       disabledForegroundColor: colors_4,
-  //       minimumSize: Size(343.w, 46.h),
-  //       maximumSize: Size(343.w, 46.h),
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(12.h),
-  //       ),
-  //       textStyle: s15w500.copyWith(letterSpacing: -1.w),
-  //     );
+  ButtonStyle get extraBtn => FilledButton.styleFrom(
+        fixedSize: Size(343.w, 40.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.h)),
+        backgroundColor: dayBasePrimary,
+        foregroundColor: dayTextIconsText_01,
+        textStyle: s14w700,
+      );
 }

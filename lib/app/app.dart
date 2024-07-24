@@ -8,6 +8,7 @@ import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
+import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
 import 'package:vsev_tuny_fren/app/repository/employee_repo.dart';
 import 'package:vsev_tuny_fren/app/repository/work_repo.dart';
 import 'package:vsev_tuny_fren/app/routing/app_router.dart';
@@ -34,6 +35,7 @@ class _AppState extends State<App> {
         providers: [
           ChangeNotifierProvider(create: (context) => WorkRepo()),
           ChangeNotifierProvider(create: (context) => EmployeeRepo()),
+          ChangeNotifierProvider(create: (context) => ClientRepo()),
         ],
         builder: (context, child) {
           return DevicePreview(

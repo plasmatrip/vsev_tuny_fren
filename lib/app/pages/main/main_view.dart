@@ -45,13 +45,7 @@ class MainView extends StatelessWidget {
                     SizedBox(height: 12.h),
                     FilledButton(
                       onPressed: () {},
-                      style: FilledButton.styleFrom(
-                          fixedSize: Size(343.w, 40.h),
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.h)),
-                          backgroundColor: dayBasePrimary,
-                          foregroundColor: dayTextIconsText_01,
-                          textStyle: context.s14w700),
+                      style: context.extraBtn,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
