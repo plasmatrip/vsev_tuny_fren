@@ -3,23 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
-import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
+import 'package:vsev_tuny_fren/app/repository/employee_repo.dart';
 
-class MiddleNameField extends StatefulWidget {
-  const MiddleNameField({
+class NameField extends StatefulWidget {
+  const NameField({
     super.key,
   });
 
   @override
-  State<MiddleNameField> createState() => _MiddleNameFieldState();
+  State<NameField> createState() => _NameFieldState();
 }
 
-class _MiddleNameFieldState extends State<MiddleNameField> {
+class _NameFieldState extends State<NameField> {
   late TextEditingController controller;
 
   @override
   void initState() {
-    controller = TextEditingController(text: context.read<ClientRepo>().middleName);
+    controller = TextEditingController(text: context.read<EmployeeRepo>().name);
     super.initState();
   }
 
@@ -43,19 +43,19 @@ class _MiddleNameFieldState extends State<MiddleNameField> {
               Padding(
                 padding: EdgeInsets.only(left: 12.w, bottom: 2.h),
                 child: Text(
-                  'Отчество',
-                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().middleName.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
+                  'Имя',
+                  style: context.s11w500.copyWith(color: context.watch<EmployeeRepo>().name.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 12.w),
                 child: TextField(
                   controller: controller,
-                  onChanged: (value) => context.read<ClientRepo>().middleName = value,
+                  onChanged: (value) => context.read<EmployeeRepo>().name = value,
                   style: context.s13w500.copyWith(color: dayTextIconsText_01),
                   decoration: InputDecoration.collapsed(
                     border: InputBorder.none,
-                    hintText: 'Отчество',
+                    hintText: 'Имя',
                     hintStyle: context.s13w500.copyWith(color: dayTextIconsText_01),
                   ),
                 ),

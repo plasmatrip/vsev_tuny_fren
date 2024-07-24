@@ -83,7 +83,14 @@ class EmployeeRepo with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> delete(int key) async {
+  Future<void> delete({int? key}) async {
+    if (key == null) {
+      if (editMode) {
+        key = editKey;
+      } else {
+        return;
+      }
+    }
     Employee employee = repo.get(editKey);
     employee.delete();
     notifyListeners();
@@ -97,5 +104,9 @@ class EmployeeRepo with ChangeNotifier {
 
   bool canSave() {
     return _employee.isNotEmpty();
+  }
+
+  Iterable employees() {
+    return repo.values;
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
-import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
+import 'package:vsev_tuny_fren/app/repository/employee_repo.dart';
 
 class MiddleNameField extends StatefulWidget {
   const MiddleNameField({
@@ -19,7 +19,7 @@ class _MiddleNameFieldState extends State<MiddleNameField> {
 
   @override
   void initState() {
-    controller = TextEditingController(text: context.read<ClientRepo>().middleName);
+    controller = TextEditingController(text: context.read<EmployeeRepo>().middleName);
     super.initState();
   }
 
@@ -44,14 +44,14 @@ class _MiddleNameFieldState extends State<MiddleNameField> {
                 padding: EdgeInsets.only(left: 12.w, bottom: 2.h),
                 child: Text(
                   'Отчество',
-                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().middleName.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
+                  style: context.s11w500.copyWith(color: context.watch<EmployeeRepo>().middleName.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 12.w),
                 child: TextField(
                   controller: controller,
-                  onChanged: (value) => context.read<ClientRepo>().middleName = value,
+                  onChanged: (value) => context.read<EmployeeRepo>().middleName = value,
                   style: context.s13w500.copyWith(color: dayTextIconsText_01),
                   decoration: InputDecoration.collapsed(
                     border: InputBorder.none,

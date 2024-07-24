@@ -5,21 +5,21 @@ import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
 import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
 
-class MiddleNameField extends StatefulWidget {
-  const MiddleNameField({
+class EmailField extends StatefulWidget {
+  const EmailField({
     super.key,
   });
 
   @override
-  State<MiddleNameField> createState() => _MiddleNameFieldState();
+  State<EmailField> createState() => _EmailFieldState();
 }
 
-class _MiddleNameFieldState extends State<MiddleNameField> {
+class _EmailFieldState extends State<EmailField> {
   late TextEditingController controller;
 
   @override
   void initState() {
-    controller = TextEditingController(text: context.read<ClientRepo>().middleName);
+    controller = TextEditingController(text: context.read<ClientRepo>().email);
     super.initState();
   }
 
@@ -43,19 +43,19 @@ class _MiddleNameFieldState extends State<MiddleNameField> {
               Padding(
                 padding: EdgeInsets.only(left: 12.w, bottom: 2.h),
                 child: Text(
-                  'Отчество',
-                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().middleName.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
+                  'Email (необязательно)',
+                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().email.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 12.w),
                 child: TextField(
                   controller: controller,
-                  onChanged: (value) => context.read<ClientRepo>().middleName = value,
+                  onChanged: (value) => context.read<ClientRepo>().email = value,
                   style: context.s13w500.copyWith(color: dayTextIconsText_01),
                   decoration: InputDecoration.collapsed(
                     border: InputBorder.none,
-                    hintText: 'Отчество',
+                    hintText: 'Email (необязательно)',
                     hintStyle: context.s13w500.copyWith(color: dayTextIconsText_01),
                   ),
                 ),

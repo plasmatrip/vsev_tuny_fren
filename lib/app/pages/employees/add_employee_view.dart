@@ -6,18 +6,20 @@ import 'package:provider/provider.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
 import 'package:vsev_tuny_fren/app/internal/widgets/alert_dialog.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/comment_field.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/email_field.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/middle_name_field.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/name_field.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/phone_field.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/surname_field.dart';
-import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/telegram_field.dart';
-import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/birthday_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/comment_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/excperience_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/middle_name_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/name_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/phone_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/photo_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/post_field.dart';
+import 'package:vsev_tuny_fren/app/pages/employees/widgets/fields/surname_field.dart';
+import 'package:vsev_tuny_fren/app/repository/employee_repo.dart';
 
 @RoutePage()
-class AddClientView extends StatelessWidget {
-  const AddClientView({super.key});
+class AddEmployeeView extends StatelessWidget {
+  const AddEmployeeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +30,22 @@ class AddClientView extends StatelessWidget {
           leading: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () {
-              context.read<ClientRepo>().clean();
+              context.read<EmployeeRepo>().clean();
               AutoRouter.of(context).removeLast();
             },
             child: Icon(Icons.arrow_back, color: dayTextIconsText_02, size: 24.h),
           ),
-          title: const Text('Клиент'),
+          title: const Text('Сотрудник'),
           actions: [
             Padding(
               padding: EdgeInsets.only(right: 16.w),
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () async {
-                  if (context.read<ClientRepo>().editMode) {
-                    context.read<ClientRepo>().delete();
+                  if (context.read<EmployeeRepo>().editMode) {
+                    context.read<EmployeeRepo>().delete();
                   } else {
-                    context.read<ClientRepo>().clean();
+                    context.read<EmployeeRepo>().clean();
                   }
                   AutoRouter.of(context).removeLast();
                 },
@@ -60,10 +62,15 @@ class AddClientView extends StatelessWidget {
                 NameField(),
                 MiddleNameField(),
                 SurnameField(),
+                PostField(),
+                ExperienceField(),
+                BirtdayField(),
                 PhoneField(),
-                TelegramField(),
-                EmailField(),
                 CommentField(),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: PhotoField(),
+                ),
               ],
             ),
           ),
@@ -71,11 +78,11 @@ class AddClientView extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FilledButton(
           onPressed: () async {
-            if (context.read<ClientRepo>().canSave()) {
-              context.read<ClientRepo>().save();
+            if (context.read<EmployeeRepo>().canSave()) {
+              context.read<EmployeeRepo>().save();
               AutoRouter.of(context).maybePop(true);
             } else {
-              await alertDialog(context, 'Заполните ФИО клиента и его телефон.');
+              await alertDialog(context, 'Заполните ФИО работника, должность, стаж работы и телефон.');
             }
           },
           style: context.btnOK.copyWith(

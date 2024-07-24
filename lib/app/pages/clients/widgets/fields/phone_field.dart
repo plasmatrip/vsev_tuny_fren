@@ -5,21 +5,21 @@ import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
 import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
 
-class MiddleNameField extends StatefulWidget {
-  const MiddleNameField({
+class PhoneField extends StatefulWidget {
+  const PhoneField({
     super.key,
   });
 
   @override
-  State<MiddleNameField> createState() => _MiddleNameFieldState();
+  State<PhoneField> createState() => _PhoneFieldState();
 }
 
-class _MiddleNameFieldState extends State<MiddleNameField> {
+class _PhoneFieldState extends State<PhoneField> {
   late TextEditingController controller;
 
   @override
   void initState() {
-    controller = TextEditingController(text: context.read<ClientRepo>().middleName);
+    controller = TextEditingController(text: context.read<ClientRepo>().phone);
     super.initState();
   }
 
@@ -43,19 +43,19 @@ class _MiddleNameFieldState extends State<MiddleNameField> {
               Padding(
                 padding: EdgeInsets.only(left: 12.w, bottom: 2.h),
                 child: Text(
-                  'Отчество',
-                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().middleName.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
+                  'Номер телефона',
+                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().phone.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 12.w),
                 child: TextField(
                   controller: controller,
-                  onChanged: (value) => context.read<ClientRepo>().middleName = value,
+                  onChanged: (value) => context.read<ClientRepo>().phone = value,
                   style: context.s13w500.copyWith(color: dayTextIconsText_01),
                   decoration: InputDecoration.collapsed(
                     border: InputBorder.none,
-                    hintText: 'Отчество',
+                    hintText: 'Номер телефона',
                     hintStyle: context.s13w500.copyWith(color: dayTextIconsText_01),
                   ),
                 ),

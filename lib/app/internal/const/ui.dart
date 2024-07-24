@@ -42,4 +42,24 @@ extension UI on BuildContext {
         foregroundColor: dayTextIconsText_01,
         textStyle: s14w700,
       );
+
+  ButtonStyle get btnOK => FilledButton.styleFrom(
+        minimumSize: Size(110.w, 30.h),
+        maximumSize: Size(110.w, 30.h),
+        padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.h)),
+        backgroundColor: dayBaseAccent_01,
+        foregroundColor: dayTextIconsText_01,
+        textStyle: s13w500,
+      );
+
+  ButtonStyle get btnCancel => FilledButton.styleFrom(
+        minimumSize: Size(110.w, 30.h),
+        maximumSize: Size(110.w, 30.h),
+        padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 6.h),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.h)),
+        backgroundColor: dayBaseBase_03,
+        foregroundColor: dayTextIconsText_01,
+        textStyle: s13w500,
+      );
 }

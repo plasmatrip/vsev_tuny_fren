@@ -32,7 +32,7 @@ class _NameFieldState extends State<NameField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 44.h,
+      // height: 45.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -52,11 +52,11 @@ class _NameFieldState extends State<NameField> {
                 child: TextField(
                   controller: controller,
                   onChanged: (value) => context.read<ClientRepo>().name = value,
-                  style: context.s13w500.copyWith(color: dayTextIconsText_01, height: 0.h),
+                  style: context.s13w500.copyWith(color: dayTextIconsText_01),
                   decoration: InputDecoration.collapsed(
                     border: InputBorder.none,
                     hintText: 'Имя',
-                    hintStyle: context.s13w500.copyWith(color: dayTextIconsText_01, height: 0.h),
+                    hintStyle: context.s13w500.copyWith(color: dayTextIconsText_01),
                   ),
                 ),
               ),

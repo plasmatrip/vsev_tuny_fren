@@ -71,8 +71,15 @@ class ClientRepo with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> delete(int key) async {
-    Client client = repo.get(editKey);
+  Future<void> delete({int? key}) async {
+    if (key == null) {
+      if (editMode) {
+        key = editKey;
+      } else {
+        return;
+      }
+    }
+    Client client = repo.get(key);
     client.delete();
     notifyListeners();
   }
@@ -85,5 +92,9 @@ class ClientRepo with ChangeNotifier {
 
   bool canSave() {
     return _client.isNotEmpty();
+  }
+
+  Iterable clients() {
+    return repo.values;
   }
 }
