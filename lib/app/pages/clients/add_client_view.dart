@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/middle_name_field.dart';
 import 'package:vsev_tuny_fren/app/pages/clients/widgets/fields/name_field.dart';
 
 @RoutePage()
@@ -32,6 +33,7 @@ class AddClientView extends StatelessWidget {
             child: const Column(
               children: [
                 NameField(),
+                MiddleNameField(),
               ],
             ),
           ),

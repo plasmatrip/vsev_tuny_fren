@@ -5,21 +5,21 @@ import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
 import 'package:vsev_tuny_fren/app/repository/client_repo.dart';
 
-class NameField extends StatefulWidget {
-  const NameField({
+class MiddleNameField extends StatefulWidget {
+  const MiddleNameField({
     super.key,
   });
 
   @override
-  State<NameField> createState() => _NameFieldState();
+  State<MiddleNameField> createState() => _MiddleNameFieldState();
 }
 
-class _NameFieldState extends State<NameField> {
+class _MiddleNameFieldState extends State<MiddleNameField> {
   late TextEditingController controller;
 
   @override
   void initState() {
-    controller = TextEditingController(text: context.read<ClientRepo>().name);
+    controller = TextEditingController(text: context.read<ClientRepo>().middleName);
     super.initState();
   }
 
@@ -43,19 +43,19 @@ class _NameFieldState extends State<NameField> {
               Padding(
                 padding: EdgeInsets.only(left: 12.w, bottom: 2.h),
                 child: Text(
-                  'Имя',
-                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().name.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
+                  'Отчество',
+                  style: context.s11w500.copyWith(color: context.watch<ClientRepo>().middleName.isNotEmpty ? dayTextIconsText_03 : dayBaseBase_02, height: 0),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 12.w),
                 child: TextField(
                   controller: controller,
-                  onChanged: (value) => context.read<ClientRepo>().name = value,
+                  onChanged: (value) => context.read<ClientRepo>().middleName = value,
                   style: context.s13w500.copyWith(color: dayTextIconsText_01, height: 0.h),
                   decoration: InputDecoration.collapsed(
                     border: InputBorder.none,
-                    hintText: 'Имя',
+                    hintText: 'Отчество',
                     hintStyle: context.s13w500.copyWith(color: dayTextIconsText_01, height: 0.h),
                   ),
                 ),
