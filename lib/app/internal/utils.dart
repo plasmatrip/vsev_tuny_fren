@@ -49,3 +49,21 @@ RelativeRect position(GlobalKey globalKey, BuildContext context) {
   );
   return position;
 }
+
+bool dateIsBefore(DateTime? testingDate, DateTime? startDate) {
+  if (testingDate == null || startDate == null) {
+    return false;
+  }
+  return (testingDate.year < startDate.year) ||
+      (testingDate.year <= startDate.year && testingDate.month < startDate.month) ||
+      (testingDate.year <= startDate.year && testingDate.month <= startDate.month && testingDate.day < startDate.day);
+}
+
+bool dateIsAfter(DateTime? testingDate, DateTime? startDate) {
+  if (testingDate == null || startDate == null) {
+    return false;
+  }
+  return (testingDate.year > startDate.year) ||
+      (testingDate.year >= startDate.year && testingDate.month > startDate.month) ||
+      (testingDate.year >= startDate.year && testingDate.month >= startDate.month && testingDate.day > startDate.day);
+}

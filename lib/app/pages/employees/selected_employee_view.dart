@@ -53,7 +53,7 @@ class _SelectedEmployeeViewState extends State<SelectedEmployeeView> {
               var result = await AutoRouter.of(context).push(const AddEmployeeView());
               if (result == true) {
                 setState(() {
-                  context.read<EmployeeRepo>().repo.get(widget.employeeKey);
+                  employee = context.read<EmployeeRepo>().repo.get(widget.employeeKey);
                 });
               }
             },

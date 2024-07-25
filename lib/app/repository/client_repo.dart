@@ -94,7 +94,9 @@ class ClientRepo with ChangeNotifier {
     return _client.isNotEmpty();
   }
 
-  Iterable clients() {
-    return repo.values;
+  Iterable clients({String? serarchString}) {
+    serarchString ??= '';
+    return repo.values
+        .where((element) => serarchString!.isEmpty ? true : ((element as Client).name.contains(serarchString) || element.surname.contains(serarchString)));
   }
 }

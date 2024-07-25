@@ -65,6 +65,18 @@ class _AppState extends State<App> {
                           centerTitle: false,
                           titleTextStyle: context.s17w700.copyWith(color: dayTextIconsText_02),
                         ),
+                        bottomSheetTheme: BottomSheetThemeData(
+                          constraints: BoxConstraints(
+                            maxWidth: 375.w,
+                          ),
+                          backgroundColor: dayBaseBase_02,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24.h),
+                              topRight: Radius.circular(24.h),
+                            ),
+                          ),
+                        ),
                         useMaterial3: true,
                       ),
                       routerConfig: appRouter.config(),

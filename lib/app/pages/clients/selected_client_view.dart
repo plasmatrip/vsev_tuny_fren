@@ -47,7 +47,7 @@ class _SelectedClientViewState extends State<SelectedClientView> {
               var result = await AutoRouter.of(context).push(const AddClientView());
               if (result == true) {
                 setState(() {
-                  context.read<ClientRepo>().repo.get(widget.clientKey);
+                  client = context.read<ClientRepo>().repo.get(widget.clientKey);
                 });
               }
             },

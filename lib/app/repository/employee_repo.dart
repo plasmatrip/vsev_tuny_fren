@@ -91,7 +91,7 @@ class EmployeeRepo with ChangeNotifier {
         return;
       }
     }
-    Employee employee = repo.get(editKey);
+    Employee employee = repo.get(key);
     employee.delete();
     notifyListeners();
   }
@@ -106,7 +106,9 @@ class EmployeeRepo with ChangeNotifier {
     return _employee.isNotEmpty();
   }
 
-  Iterable employees() {
-    return repo.values;
+  Iterable employees({String? serarchString}) {
+    serarchString ??= '';
+    return repo.values
+        .where((element) => serarchString!.isEmpty ? true : ((element as Employee).name.contains(serarchString) || element.surname.contains(serarchString)));
   }
 }

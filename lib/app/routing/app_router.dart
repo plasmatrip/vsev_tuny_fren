@@ -20,5 +20,8 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SelectedClientView.page),
         AutoRoute(page: AddEmployeeView.page),
         AutoRoute(page: SelectedEmployeeView.page),
+        AutoRoute(page: AddWorkView.page),
+        AutoRoute(page: PeopleSelector.page),
+        AutoRoute(page: SelectedWorkView.page),
       ];
 }
