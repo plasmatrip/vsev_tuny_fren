@@ -19,7 +19,7 @@ Future<String?> deleteDialog(BuildContext context, String question) {
             actions: <Widget>[
               Container(
                 width: 260.w,
-                height: 120.h,
+                height: 135.h,
                 padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
                 decoration: ShapeDecoration(
                   color: Colors.white,

@@ -32,7 +32,7 @@ class WorkItem extends StatelessWidget {
       child: Container(
         width: 343.w,
         height: 118.h,
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
         decoration: ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
@@ -47,100 +47,118 @@ class WorkItem extends StatelessWidget {
             )
           ],
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    work.name,
-                    style: context.s15w400.copyWith(color: dayBaseSecondary_02),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () async {
-                    var result = await editDeleteDialog(context, globalKey);
-                    switch (result) {
-                      case 'EDIT':
-                        if (context.mounted) {
-                          context.read<WorkRepo>().edit(work.key);
-                          AutoRouter.of(context).push(const AddWorkView());
-                        }
-                      case 'DELETE':
-                        if (context.mounted) {
-                          var result = await deleteDialog(context, 'Удалить запись?');
-                          if (result == 'DELETE' && context.mounted) {
-                            context.read<WorkRepo>().delete(key: work.key);
-                          }
-                        }
-                    }
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 6.w),
-                    child: Icon(
-                      key: globalKey,
-                      Icons.more_vert,
-                      color: dayBaseBase_05,
-                      size: 24.h,
+        child: SizedBox(
+          width: 319.w,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 289.w,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            work.name,
+                            style: context.s15w400.copyWith(color: dayBaseSecondary_02),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Клиент:', style: context.s13w500.copyWith(color: dayTextIconsText_03)),
-                    SizedBox(height: 4.h),
-                    Text('Сотрудник:  ', style: context.s13w500.copyWith(color: dayTextIconsText_03)),
-                    SizedBox(height: 4.h),
-                    Text('Время:', style: context.s13w500.copyWith(color: dayTextIconsText_03)),
-                  ],
-                ),
-                SizedBox(
-                  width: 240.w,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Text(
-                        client == null ? 'Клиент удален из базы!' : '${client.surname} ${client.name} ${client.middleName}',
-                        style: context.s13w500.copyWith(color: dayTextIconsLink),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(height: 4.h),
-                      Text(
-                        employee == null ? 'Сотрудник удален из базы!' : '${employee.surname} ${employee.name} ${employee.middleName}',
-                        style: context.s13w500.copyWith(color: dayTextIconsLink),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(height: 4.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(periods[work.time!], style: context.s13w500.copyWith(color: dayTextIconsText_01)),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: dayBaseBase_05,
-                            size: 24.h,
-                          )
+                          Text('Клиент:', style: context.s13w500.copyWith(color: dayTextIconsText_03)),
+                          SizedBox(height: 4.h),
+                          Text('Сотрудник:  ', style: context.s13w500.copyWith(color: dayTextIconsText_03)),
+                          SizedBox(height: 4.h),
+                          Text('Время:', style: context.s13w500.copyWith(color: dayTextIconsText_03)),
                         ],
                       ),
+                      SizedBox(
+                        width: 200.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              client == null ? 'Клиент удален из базы!' : '${client.surname} ${client.name} ${client.middleName}',
+                              style: context.s13w500.copyWith(color: dayTextIconsLink),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(height: 4.h),
+                            Text(
+                              employee == null ? 'Сотрудник удален из базы!' : '${employee.surname} ${employee.name} ${employee.middleName}',
+                              style: context.s13w500.copyWith(color: dayTextIconsLink),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(height: 4.h),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(periods[work.time!], style: context.s13w500.copyWith(color: dayTextIconsText_01)),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () async {
+                      var result = await editDeleteDialog(context, globalKey);
+                      switch (result) {
+                        case 'EDIT':
+                          if (context.mounted) {
+                            context.read<WorkRepo>().edit(work.key);
+                            AutoRouter.of(context).push(AddWorkView());
+                          }
+                        case 'DELETE':
+                          if (context.mounted) {
+                            var result = await deleteDialog(context, 'Удалить запись?');
+                            if (result == 'DELETE' && context.mounted) {
+                              context.read<WorkRepo>().delete(key: work.key);
+                            }
+                          }
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 6.w),
+                      child: Icon(
+                        key: globalKey,
+                        Icons.more_vert,
+                        color: dayBaseBase_05,
+                        size: 24.h,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            )
-          ],
+                  Icon(
+                    Icons.arrow_forward,
+                    color: dayBaseBase_05,
+                    size: 24.h,
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

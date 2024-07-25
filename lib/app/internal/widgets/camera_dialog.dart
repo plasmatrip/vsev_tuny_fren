@@ -16,8 +16,8 @@ Future<String?> cameraDialog(BuildContext context) {
         actionsPadding: EdgeInsets.zero,
         actionsAlignment: MainAxisAlignment.center,
         content: SizedBox(
-          // width: 100.w,
-          height: 125.h,
+          width: 100.w,
+          height: 135.h,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

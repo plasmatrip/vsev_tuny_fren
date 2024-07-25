@@ -180,7 +180,7 @@ class _SelectedEmployeeViewState extends State<SelectedEmployeeView> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FilledButton(
-        onPressed: () {},
+        onPressed: () async => AutoRouter.of(context).push(AddWorkView(employee: employee)),
         style: context.extraBtn,
         child: const Text('Записать клиента'),
       ),

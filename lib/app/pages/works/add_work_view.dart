@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
 import 'package:vsev_tuny_fren/app/internal/widgets/alert_dialog.dart';
+import 'package:vsev_tuny_fren/app/models/employee.dart';
 import 'package:vsev_tuny_fren/app/pages/works/widgets/fields/client_field.dart';
 import 'package:vsev_tuny_fren/app/pages/works/widgets/fields/comment_field.dart';
 import 'package:vsev_tuny_fren/app/pages/works/widgets/fields/date_field.dart';
@@ -16,10 +17,15 @@ import 'package:vsev_tuny_fren/app/repository/work_repo.dart';
 
 @RoutePage()
 class AddWorkView extends StatelessWidget {
-  const AddWorkView({super.key});
+  const AddWorkView({super.key, this.employee});
+
+  final Employee? employee;
 
   @override
   Widget build(BuildContext context) {
+    if (employee != null && context.read<WorkRepo>().employee == null) {
+      context.read<WorkRepo>().setEmployee(employee!);
+    }
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(

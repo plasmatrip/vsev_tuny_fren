@@ -35,12 +35,12 @@ class WorksList extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
+                      key: globalKey,
                       workType[context.watch<WorkRepo>().selectedWorkType],
                       style: context.s13w500.copyWith(color: dayTextIconsText_02),
                     ),
                     SizedBox(width: 8.w),
                     Icon(
-                      key: globalKey,
                       Icons.expand_more,
                       color: dayTextIconsText_02,
                       size: 24.h,
@@ -51,7 +51,7 @@ class WorksList extends StatelessWidget {
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () async {
-                  var date = await dateDialog(context, context.read<WorkRepo>().selectedDate);
+                  var date = await dateDialog(context, context.read<WorkRepo>().selectedDate, true);
                   if (date != null && context.mounted) {
                     context.read<WorkRepo>().selectedDate = date;
                   }

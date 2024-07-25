@@ -77,6 +77,14 @@ class WorkRepo with ChangeNotifier {
     notifyListeners();
   }
 
+  void setEmployee(Employee employee) {
+    _work.employee ??= HiveList(Hive.box<Employee>(Boxes.employee));
+    if (_work.employee!.isNotEmpty) {
+      _work.employee!.clear();
+    }
+    _work.employee!.add(employee);
+  }
+
   Client? get client => _work.client != null ? _work.client!.last as Client : null;
   set client(Client? value) {
     _work.client ??= HiveList(Hive.box<Client>(Boxes.client));
@@ -151,5 +159,17 @@ class WorkRepo with ChangeNotifier {
       }
     }
     return works;
+  }
+
+  List<dynamic> eventsForDay(DateTime date) {
+    if (repo.values.any((element) => datesIsEqual((element as Work).date, date))) {
+      return [true];
+    }
+    return [];
+  }
+
+  Iterable currentWorks() {
+    return repo.values.where((element) => datesIsEqual((element as Work).date, DateTime.now()));
+    //.where((element) => times[(element as Work).time!] > TimeOfDay.now().hour);
   }
 }

@@ -10,6 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i15;
 import 'package:flutter/material.dart' as _i16;
+import 'package:vsev_tuny_fren/app/models/employee.dart' as _i17;
 import 'package:vsev_tuny_fren/app/pages/clients/add_client_view.dart' as _i1;
 import 'package:vsev_tuny_fren/app/pages/clients/clients_view.dart' as _i4;
 import 'package:vsev_tuny_fren/app/pages/clients/selected_client_view.dart'
@@ -47,9 +48,14 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       );
     },
     AddWorkView.name: (routeData) {
+      final args = routeData.argsAs<AddWorkViewArgs>(
+          orElse: () => const AddWorkViewArgs());
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.AddWorkView(),
+        child: _i3.AddWorkView(
+          key: args.key,
+          employee: args.employee,
+        ),
       );
     },
     ClientsView.name: (routeData) {
@@ -167,16 +173,40 @@ class AddEmployeeView extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.AddWorkView]
-class AddWorkView extends _i15.PageRouteInfo<void> {
-  const AddWorkView({List<_i15.PageRouteInfo>? children})
-      : super(
+class AddWorkView extends _i15.PageRouteInfo<AddWorkViewArgs> {
+  AddWorkView({
+    _i16.Key? key,
+    _i17.Employee? employee,
+    List<_i15.PageRouteInfo>? children,
+  }) : super(
           AddWorkView.name,
+          args: AddWorkViewArgs(
+            key: key,
+            employee: employee,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AddWorkView';
 
-  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
+  static const _i15.PageInfo<AddWorkViewArgs> page =
+      _i15.PageInfo<AddWorkViewArgs>(name);
+}
+
+class AddWorkViewArgs {
+  const AddWorkViewArgs({
+    this.key,
+    this.employee,
+  });
+
+  final _i16.Key? key;
+
+  final _i17.Employee? employee;
+
+  @override
+  String toString() {
+    return 'AddWorkViewArgs{key: $key, employee: $employee}';
+  }
 }
 
 /// generated route for

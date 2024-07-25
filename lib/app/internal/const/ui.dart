@@ -16,24 +16,6 @@ extension UI on BuildContext {
   TextStyle get s11w700 => TextStyle(fontSize: 11.h, fontFamily: 'Manrope', fontWeight: FontWeight.w700);
   TextStyle get s11w500 => TextStyle(fontSize: 11.h, fontFamily: 'Manrope', fontWeight: FontWeight.w500);
 
-  // TextStyle get textUnderline => TextStyle(
-  //       fontSize: 21.h,
-  //       fontFamily: 'Neue Machina',
-  //       fontWeight: FontWeight.w700,
-  //       color: Colors.transparent,
-  //       shadows: [
-  //         Shadow(
-  //           offset: Offset(0, -5.h),
-  //           color: colors_3,
-  //         ),
-  //       ],
-  //       decoration: TextDecoration.underline,
-  //       decorationStyle: TextDecorationStyle.solid,
-  //       decorationColor: colors_2,
-  //       decorationThickness: 3.h,
-  //       height: 0,
-  //     );
-
   ButtonStyle get extraBtn => FilledButton.styleFrom(
         fixedSize: Size(343.w, 40.h),
         padding: EdgeInsets.symmetric(horizontal: 20.w),

@@ -25,7 +25,7 @@ class WorksView extends StatelessWidget {
               padding: EdgeInsets.only(right: 16.w),
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () async => AutoRouter.of(context).push(const AddWorkView()),
+                onTap: () async => AutoRouter.of(context).push(AddWorkView()),
                 child: Container(
                   width: 56.w,
                   height: 35.h,

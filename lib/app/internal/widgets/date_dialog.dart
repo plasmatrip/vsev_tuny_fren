@@ -2,9 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
+import 'package:vsev_tuny_fren/app/repository/work_repo.dart';
 
 Future<DateTime?> dateDialog(BuildContext context, DateTime? selectedDate, [bool showEvents = false]) {
   const monthName = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
@@ -37,7 +39,13 @@ Future<DateTime?> dateDialog(BuildContext context, DateTime? selectedDate, [bool
                     weekNumbersVisible: false,
                     calendarFormat: CalendarFormat.month,
                     startingDayOfWeek: StartingDayOfWeek.monday,
+                    eventLoader: showEvents ? (day) => context.read<WorkRepo>().eventsForDay(day) : null,
                     calendarStyle: CalendarStyle(
+                      markerSize: 5.h,
+                      markerDecoration: BoxDecoration(
+                        color: dayBaseAccent_01,
+                        borderRadius: BorderRadius.all(Radius.circular(5.h)),
+                      ),
                       cellAlignment: Alignment.center,
                       cellMargin: EdgeInsets.all(3.h),
                       cellPadding: EdgeInsets.zero,

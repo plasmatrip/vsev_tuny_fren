@@ -84,7 +84,7 @@ class EmployeeItem extends StatelessWidget {
                     ),
                     SizedBox(height: 4.h),
                     FilledButton(
-                      onPressed: () {},
+                      onPressed: () async => AutoRouter.of(context).push(AddWorkView(employee: employee)),
                       style: context.btnOK.copyWith(
                         minimumSize: WidgetStatePropertyAll(Size(137.w, 24.h)),
                         maximumSize: WidgetStatePropertyAll(Size(137.w, 24.h)),

@@ -44,13 +44,13 @@ class _SelectedWorkViewState extends State<SelectedWorkView> {
           onTap: () => AutoRouter.of(context).removeLast(),
           child: Icon(Icons.arrow_back, color: dayTextIconsText_02, size: 24.h),
         ),
-        title: const Text('Сотрудник'),
+        title: const Text('Запись'),
         actions: [
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () async {
               context.read<WorkRepo>().edit(widget.workKey);
-              var result = await AutoRouter.of(context).push(const AddWorkView());
+              var result = await AutoRouter.of(context).push(AddWorkView());
               if (result == true) {
                 setState(() {
                   work = context.read<WorkRepo>().repo.get(widget.workKey);

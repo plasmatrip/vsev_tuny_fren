@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:vsev_tuny_fren/app/internal/const/colors.dart';
 import 'package:vsev_tuny_fren/app/internal/const/ui.dart';
+import 'package:vsev_tuny_fren/app/pages/main/widgets/current_works.dart';
+import 'package:vsev_tuny_fren/app/pages/main/widgets/empty_works.dart';
 import 'package:vsev_tuny_fren/app/pages/main/widgets/fast_access.dart';
 import 'package:vsev_tuny_fren/app/repository/work_repo.dart';
 
@@ -31,38 +33,12 @@ class MainView extends StatelessWidget {
               ),
             ),
             if (context.watch<WorkRepo>().repo.isEmpty) ...[
-              SizedBox(
-                width: 375.w,
-                height: 152.h,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Нет информации',
-                      style: context.s15w400.copyWith(color: dayTextIconsText_01),
-                    ),
-                    SizedBox(height: 12.h),
-                    FilledButton(
-                      onPressed: () {},
-                      style: context.extraBtn,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text('Добавить'),
-                          Icon(Icons.add, color: dayTextIconsText_01, size: 24.h),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 23.h),
-                  ],
-                ),
-              ),
-            ] else
-              ...[],
+              const EmptyWorks(),
+            ] else ...[
+              const CurrentWorks(),
+            ],
             Padding(
-              padding: EdgeInsets.only(left: 16.w, top: 32.h, bottom: 6.h),
+              padding: EdgeInsets.only(left: 16.w, bottom: 6.h),
               child: Text(
                 'Быстрый доступ',
                 style: context.s14w700.copyWith(color: dayTextIconsText_01),
